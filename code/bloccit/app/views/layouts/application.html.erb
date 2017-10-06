@@ -15,8 +15,18 @@
      <li><%= link_to "About", about_path %></li>
      <div class="pull-right user-info">
        <% if current_user %>
-          <%= current_user.name %> - <%= link_to "Sign Out", session_path(current_user), method: :delete %>
-       <% else %>
+         <div class="row">
+          <div class="col-md-5 nopadding vcenter">
+            <h4>
+              <%= current_user.name %>
+              <%= link_to "Sign Out", session_path(current_user), method: :delete %>
+            </h4>
+          </div>
+          <div class="col-md-4 nopadding vcenter">
+            <%= avatar_url(current_user) %>
+          </div>
+        </div>
+         <% else %>
           <%= link_to "Sign In", new_session_path %> or
           <%= link_to "Sign Up", new_user_path %>
        <% end %>
