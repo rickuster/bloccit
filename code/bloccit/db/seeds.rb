@@ -28,7 +28,7 @@ topics = Topic.all
     title: RandomData.random_sentence,
     body:  RandomData.random_paragraph
   )
-    
+
     post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
     rand(1..5).times { post.votes.create!(value: [-1, 1].sample, user: users.sample) }
 
@@ -45,20 +45,21 @@ posts = Post.all
   )
 end
 
-# Create an admin user
-admin = User.create!(
-  name:     'Admin User',
-  email:    'admin@example.com',
-  password: 'helloworld',
-  role:     'admin'
-)
-
 # Create a member
 member = User.create!(
   name:     'Member User',
   email:    'member@example.com',
   password: 'helloworld'
 )
+
+# Create an admin user
+admin = User.create!(
+  name:     'Admin User',
+  email:    'rickuster@gmail.com',
+  password: 'helloworld',
+  role:     'admin'
+)
+
 
 puts "Seed finished"
 puts "#{User.count} users created"
