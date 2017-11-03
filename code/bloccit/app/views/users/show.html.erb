@@ -20,7 +20,20 @@
 </div>
 
 <h2>Posts</h2>
-<%= render @user.posts %>
+<%= check_and_list_posts(@user) %>
 
 <h2>Comments</h2>
-<%= render @user.comments %>
+<%= check_and_list_comments(@user) %>
+
+<h2>Favorites</h2>
+<% avatar_url2 = @user.avatar_url(48) %>
+ <% @user.favorites.each do |fav| %>
+ <div class="media">
+   <div class="media-left">
+     <%= image_tag avatar_url2, class: 'media-object' %>
+   </div>
+   <div class="media-body">
+     <%= render partial: "posts/post", locals: {post: fav.post } %>
+   </div>
+ </div>
+ <% end %>
